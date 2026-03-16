@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TaskFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="app">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <div class="logo-block">
+          <div class="logo">
+            <div class="logo-icon">✦</div>
+            <span class="logo-text">TaskFlow</span>
+          </div>
+          <div class="logo-sub">C++ Backend &nbsp;·&nbsp; REST API</div>
+        </div>
+        <div class="header-stats">
+          <div class="stat-pill">
+            <span class="stat-num" id="statTotal">0</span>
+            <span class="stat-lbl">tasks</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-pill">
+            <span class="stat-num accent" id="statDone">0</span>
+            <span class="stat-lbl">done</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-pill">
+            <span class="stat-num warn" id="statOverdue">0</span>
+            <span class="stat-lbl">overdue</span>
+          </div>
+        </div>
+      </div>
+      <div class="header-right">
+        <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+          <span class="theme-icon" id="themeIcon">☀</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Add Task Panel -->
+    <div class="add-panel">
+      <div class="add-panel-inner">
+        <input
+          type="text"
+          id="taskInput"
+          class="task-input"
+          placeholder="What needs to be done?"
+          autocomplete="off"
+        />
+        <div class="add-meta">
+          <div class="meta-group">
+            <label class="meta-label">Priority</label>
+            <div class="priority-selector" id="prioritySelector">
+              <button class="prio-btn active" data-prio="low">Low</button>
+              <button class="prio-btn" data-prio="medium">Medium</button>
+              <button class="prio-btn" data-prio="high">High</button>
+            </div>
+          </div>
+          <div class="meta-group">
+            <label class="meta-label">Due Date <span class="optional">(optional)</span></label>
+            <div class="date-wrapper" onclick="document.getElementById('dueDateInput').showPicker()">
+              <span class="date-icon">📅</span>
+              <input type="date" id="dueDateInput" class="date-input"/>
+            </div>
+          </div>
+          <button class="add-btn" id="addBtn" onclick="addTask()">
+            <span class="add-btn-icon">+</span>
+            <span>Add Task</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all" onclick="setFilter('all',this)">All</button>
+        <button class="filter-btn" data-filter="active" onclick="setFilter('active',this)">Active</button>
+        <button class="filter-btn" data-filter="done" onclick="setFilter('done',this)">Done</button>
+        <button class="filter-btn" data-filter="high" onclick="setFilter('high',this)">🔴 High</button>
+        <button class="filter-btn" data-filter="overdue" onclick="setFilter('overdue',this)">⏰ Overdue</button>
+      </div>
+      <div class="sort-group">
+        <label class="meta-label">Sort</label>
+        <select class="sort-select" id="sortSelect" onchange="renderTasks()">
+          <option value="newest">Newest</option>
+          <option value="priority">Priority</option>
+          <option value="duedate">Due Date</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Task List -->
+    <div class="task-list" id="taskList">
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon">◎</div>
+        <p class="empty-title">No tasks yet</p>
+        <p class="empty-sub">Add a task above to get started</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    Built by <strong>Junaid</strong> · C++ Backend · REST API
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
