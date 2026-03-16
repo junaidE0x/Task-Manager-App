@@ -6,9 +6,9 @@ A full-stack task manager built with a **C++ HTTP backend** and a **vanilla HTML
 
 ## Preview
 
-![dark mode](images/dark.png)
+![dark mode](images/Dark.png)
 
-![light mode](images/light.png)
+![light mode](images/Light.png)
 
 
 ---
