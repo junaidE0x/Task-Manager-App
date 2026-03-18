@@ -83,7 +83,6 @@ TaskFlow/
 
 Simply make sure it is inside the `backend/` folder alongside `server.cpp` before compiling.
 
-
 > **Optional:** To update to the latest version, download `httplib.h` manually from
 > https://github.com/yhirose/cpp-httplib and replace the existing file.
 
@@ -107,13 +106,18 @@ g++ -std=c++17 -o server server.cpp taskmanager.cpp -lpthread
 
 ### Step 3 — Run the Server
 
-**Windows:**
+**Option A — One click (recommended):**
+Double-click `start.bat` in the project root. Done.
+
+**Option B — Manual (Windows):**
 ```bash
+cd backend
 ./server.exe
 ```
 
-**Linux / Mac:**
+**Option B — Manual (Linux / Mac):**
 ```bash
+cd backend
 ./server
 ```
 
@@ -126,23 +130,27 @@ TaskFlow server running at http://localhost:8080
 
 ### Step 4 — Open the Frontend
 
-Double-click `frontend/index.html` in File Explorer / Finder.
+**If you used `start.bat`:** The browser opens automatically — nothing to do.
 
-> Do **not** use VS Code Live Server — open the file directly so it can reach `localhost:8080`.
+**If you ran the server manually:** Double-click `frontend/index.html` in File Explorer.
+
+> Do **not** use VS Code Live Server — open the file directly so it
+> can reach `localhost:8080`.
 
 ---
 
 ### One-Click Launch (Windows)
 
-Double-click `start.bat` in the project root to start the server and open the browser automatically.
+`start.bat` is already included in the repository root.
 
-```bat
-@echo off
-start "TaskFlow Server" cmd /k "cd /d %~dp0backend && server.exe"
-timeout /t 2 /nobreak > nul
-start "" "%~dp0frontend\index.html"
-```
+Just double-click it — it automatically starts the server and opens the frontend in your browser.
 
+**What it does:**
+1. Opens a terminal window running `server.exe`
+2. Waits 2 seconds for the server to start
+3. Opens `frontend/index.html` in your default browser
+
+> To stop the app, just close the black server terminal window.
 ---
 
 ## REST API Reference
