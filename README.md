@@ -48,7 +48,7 @@ TaskFlow/
 │   ├── server.cpp          ← HTTP server & API routes
 │   ├── taskmanager.cpp     ← Task logic & file storage
 │   ├── taskmanager.h       ← Task class definitions
-│   └── httplib.h           ← cpp-httplib (download separately)
+│   └── httplib.h           ← cpp-httplib
 │
 ├── frontend/
 │   ├── index.html          ← App UI
